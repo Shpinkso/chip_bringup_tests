@@ -5,7 +5,9 @@ echo 0 > /sys/devices/platform/gpio_leds/leds/marduk:red:user1/brightness
 
 sleep 20
 
-ifconfig | grep lowpan0 >> results.txt || echo fail >> results.txt
+MAC=$(proddata read MAC_0)
+
+ifconfig | grep lowpan0 >> $MAC.txt || echo fail >> $MAC.txt
 
 echo 1 > /sys/devices/platform/gpio_leds/leds/marduk:red:user1/brightness
 
