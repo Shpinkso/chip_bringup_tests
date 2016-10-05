@@ -6,9 +6,9 @@ BOARDS=${1:-15}
 SCRIPT=${2:-/tmp/script}
 IPADDRPREF="192.168.0."
 REMOTEDIR=${3:-/data}
-REMOTESCRIPT=$REMOTEDIR/##*/$SCRIPT
+REMOTESCRIPT=$REMOTEDIR/${SCRIPT##*/}
 for i in `seq 1 $BOARDS`; do
-    scp $SCRIPT $IPADDRPREF$i:$REMOTEDIR
-    echo $SCRIPT
+    scp $SCRIPT root@$IPADDRPREF$i:$REMOTEDIR
+    echo $REMOTESCRIPT | ssh $IPADDRPREF$i 'cat >> /etc/rc.local'
 done
-echo $REMOTESCRIPT
+
