@@ -15,6 +15,8 @@ for i in $(seq 1 $BOARDS); do
     ssh-keyscan -H $IPADDRPREF$k >> ~/.ssh/known_hosts
     # Copy the script to the device
     scp $SCRIPT $USER@$IPADDRPREF$k:$REMOTEDIR
+    ssh $USER@$IPADDRPREF$i
     sync
+    exit
 done
 
