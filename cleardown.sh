@@ -13,7 +13,8 @@ for i in `seq $FIRSTIP ($BOARDS + $FIRSTIP)`; do
     ssh $USER@$IPADDRPREF$i
     # Remove log files
     rm /results_*
+    sync
     # exit out of ssh
     exit 
 done
-sync
+
