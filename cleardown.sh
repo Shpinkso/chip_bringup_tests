@@ -1,7 +1,7 @@
 #!/bin/bash
 #Script clears all evidence of us having sullied the board
 BOARDS=${1:-15}
-FIRSTIP=3
+FIRSTIP=2
 LOCALFILE=~/rc.local
 REMOTEDIR=/etc
 USER=root
