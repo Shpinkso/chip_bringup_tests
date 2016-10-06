@@ -1,0 +1,17 @@
+# Put your custom commands here that should be executed once
+# the system init finished. By default this file does nothing.
+
+echo 0 > /sys/devices/platform/gpio_leds/leds/marduk:red:user1/brightness
+
+sleep 20
+
+MAC=$(proddata read MAC_0)
+
+ifconfig | grep lowpan0 >> results_$MAC.txt || echo fail >> results_$MAC.txt
+
+echo 1 > /sys/devices/platform/gpio_leds/leds/marduk:red:user1/brightness
+
+sync
+
+exit 0
+
